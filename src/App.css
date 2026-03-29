@@ -2,7 +2,7 @@ html, body {
   height: 100%;
   margin: 0;
   padding: 0;
-  background-color: #282c34; /* same as your app background */
+  background-color: #00091d; /* same as your app background */
 }
 
 .App {
@@ -12,13 +12,13 @@ html, body {
   color: white;
   padding: 40px 80px;
   box-sizing: border-box;
-  background-color: #282c34; /* ensures app div matches page */
+  background-color: #00091d; /* ensures app div matches page */
 }
 
 h1 {
   font-size: 3rem;
   margin-bottom: 20px;
-  color: #61dafb;
+  color: #dfab00;
 }
 
 input[type="search"] {
@@ -41,7 +41,7 @@ input[type="search"] {
 }
 
 .card {
-  background-color: #61dafb;
+  background-color: #f8f8f8;
   color: #282c34;
   border-radius: 10px;
   padding: 20px;
@@ -53,4 +53,60 @@ input[type="search"] {
 .card:hover {
   transform: scale(1.05);
   box-shadow: 0 8px 12px rgba(0,0,0,0.4);
+}
+
+/* Desktop (default) → 4 cards per row stays as-is */
+.card-list {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Desktop (default) → 4 cards per row stays as-is */
+.card-list {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Tablet / iPad → 2 cards per row */
+/* Tablet-specific adjustments */
+@media (max-width: 768px) {
+  .card-list {
+    grid-template-columns: repeat(2, 1fr); /* exactly 2 cards per row */
+    justify-items: center;                  /* center cards in their columns */
+    gap: 20px;                              /* keep spacing consistent */
+  }
+
+  .card {
+    width: 100%;          /* fill the grid column */
+    max-width: 300px;     /* cap width so all cards are same size */
+    word-wrap: break-word; /* wrap long names instead of expanding card */
+    box-sizing: border-box; /* include padding in width */
+  }
+}
+
+/* Phone → 1 card per row */
+/* Mobile-specific adjustments */
+@media (max-width: 480px) {
+  .card-list {
+    grid-template-columns: 1fr; /* 1 card per row */
+    justify-items: center;       /* center the card horizontally */
+    padding: 0 20px;            /* optional side padding */
+  }
+
+  .card {
+    width: 100%;          /* fill the grid column */
+    max-width: 300px;     /* cap the width */
+    word-wrap: break-word; /* wrap long names instead of stretching card */
+    box-sizing: border-box; /* include padding in width */
+  }
+
+  input[type="search"] {
+    width: 100%; /* make search box full width */
+  }
 }
