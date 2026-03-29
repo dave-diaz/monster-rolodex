@@ -9,7 +9,7 @@ html, body {
   text-align: center;
   font-family: Arial, sans-serif;
   min-height: 100vh; /* ensures the div fills the viewport height */
-  color: white;
+  color: rgb(0, 0, 0);
   padding: 40px 80px;
   box-sizing: border-box;
   background-color: #00091d; /* ensures app div matches page */
@@ -32,23 +32,26 @@ input[type="search"] {
 }
 
 /* Grid layout for 3 rows of 4 */
+/* Flexible grid for all screen sizes */
 .card-list {
   display: grid;
-  grid-template-columns: repeat(4, 1fr); /* 4 columns */
-  gap: 20px; /* spacing between cards */
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
+  /* each card is at least 200px, but grows to fill available space */
+  gap: 20px;
+  justify-items: center; /* center cards in each column */
   max-width: 1200px;
   margin: 0 auto;
 }
 
-.card {
-  background-color: #f8f8f8;
-  color: #282c34;
-  border-radius: 10px;
-  padding: 20px;
-  text-align: center;
-  transition: transform 0.2s, box-shadow 0.2s;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.3);
-}
+ .card {
+    width: 100%;            /* fill the grid column */
+    max-width: 250px;       /* ensure all cards are same size */
+    word-wrap: break-word;  /* wrap long names instead of stretching */
+    box-sizing: border-box; /* include padding in width */
+    border-radius: 20px; /* bigger number = more rounded corners */
+    background-color: rgb(236, 174, 1);
+  }
+
 
 .card:hover {
   transform: scale(1.05);
